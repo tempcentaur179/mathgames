@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jogo de Matemática</title>
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background: linear-gradient(120deg,#6ec6ff,#b3ffb3);
+}
+
+h1{
+color:#333;
+}
+
+.caixa{
+background:white;
+padding:30px;
+margin:auto;
+width:300px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+background:#4CAF50;
+color:white;
+cursor:pointer;
+}
+
+input{
+padding:8px;
+font-size:16px;
+width:80px;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎲 Matemática Divertida 🎲</h1>
+
+<div class="caixa">
+
+<p id="pergunta"></p>
+
+<input type="number" id="resposta">
+
+<br><br>
+
+<button onclick="verificar()">Responder</button>
+
+<p id="resultado"></p>
+
+</div>
+
+<script>
+
+let num1;
+let num2;
+let resposta;
+
+function novaPergunta(){
+
+num1 = Math.floor(Math.random()*10);
+num2 = Math.floor(Math.random()*10);
+
+resposta = num1 + num2;
+
+document.getElementById("pergunta").innerHTML =
+"Quanto é " + num1 + " + " + num2 + " ?";
+
+document.getElementById("resultado").innerHTML = "";
+
+document.getElementById("resposta").value = "";
+
+}
+
+function verificar(){
+
+let valor = document.getElementById("resposta").value;
+
+if(valor == resposta){
+
+document.getElementById("resultado").innerHTML =
+"🎉 Muito bem! Você acertou!";
+
+}else{
+
+document.getElementById("resultado").innerHTML =
+"❌ Opa! A resposta era " + resposta;
+
+}
+
+setTimeout(novaPergunta,2000);
+
+}
+
+novaPergunta();
+
+</script>
+
+</body>
+</html>
